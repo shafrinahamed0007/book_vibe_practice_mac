@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 const AllBooks = async () => {
   const promiseBooks = await fetch(
@@ -11,6 +12,7 @@ const AllBooks = async () => {
       <div className="container mx-auto grid md:grid-cols-2 lg:grid-cols-3 mb-5  gap-2">
         {promiseBooks.map((book) => (
           <div key={book.bookId}>
+            <Link href={`/books/${book?.bookId}`}>
             <div className="card bg-base-100 shadow-sm">
               <figure className="mt-10">
                 <Image
@@ -44,7 +46,7 @@ const AllBooks = async () => {
                   </div>
                 </div>
               </div>
-            </div>
+            </div></Link>
           </div>
         ))}
       </div>
